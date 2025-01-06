@@ -26,11 +26,11 @@ const Navbar = () => {
               <img 
                 src="/shes.svg" 
                 alt="SheSecure" 
-                className="h-12 w-12 transition-transform group-hover:scale-110" 
+                className="h-16 w-16 transition-transform group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-blue-500/20 rounded-full filter blur-xl group-hover:blur-2xl transition-all opacity-0 group-hover:opacity-100" />
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+            <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
               SheSecure
             </span>
           </Link>
@@ -69,12 +69,18 @@ const Navbar = () => {
 
             {/* Auth Buttons */}
             <div className="flex items-center gap-2">
-              <button className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+              <Link
+                to="/login"
+                className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+              >
                 Log in
-              </button>
-              <button className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors">
+              </Link>
+              <Link
+                to="/register"
+                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+              >
                 Join SheSecure
-              </button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}

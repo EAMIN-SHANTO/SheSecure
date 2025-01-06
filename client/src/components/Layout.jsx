@@ -1,13 +1,15 @@
 import React from 'react';
 import Navbar from "./Navbar.jsx";
+import Footer from "./Footer.jsx";
 
 const Layout = ({ children }) => {
-  console.log('Layout rendered'); // For debugging
-  
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      {children}
+      <main className="flex-grow">
+        {children}
+      </main>
+      <Footer />
     </div>
   );
 };

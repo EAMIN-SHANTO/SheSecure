@@ -9,6 +9,8 @@ import InteractiveLearning from "./routes/InteractiveLearning.jsx";
 import KnowCyber from "./routes/KnowCyber.jsx";
 import CyberQuiz from "./routes/CyberQuiz.jsx";
 import Topics from "./routes/Topics.jsx";
+import Login from "./routes/Login.jsx";
+import Register from "./routes/Register.jsx";
 
 const App = () => {
   console.log('App rendered');
@@ -35,6 +37,9 @@ const App = () => {
           <Route path="/quiz" element={<CyberQuiz />} />
           
           <Route path="/topics" element={<Topics />} />
+          
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           
           <Route path="*" element={
             <div className="min-h-screen bg-gray-50 pt-20 flex items-center justify-center">
