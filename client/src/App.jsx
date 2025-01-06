@@ -7,6 +7,8 @@ import Learn from "./routes/Learn.jsx";
 import SinglePostPage from "./routes/SinglePostPage.jsx";
 import InteractiveLearning from "./routes/InteractiveLearning.jsx";
 import KnowCyber from "./routes/KnowCyber.jsx";
+import CyberQuiz from "./routes/CyberQuiz.jsx";
+import Topics from "./routes/Topics.jsx";
 
 const App = () => {
   console.log('App rendered');
@@ -29,6 +31,10 @@ const App = () => {
           <Route path="/post/:slug" element={<SinglePostPage />} />
           
           <Route path="/know-cyber" element={<KnowCyber />} />
+          
+          <Route path="/quiz" element={<CyberQuiz />} />
+          
+          <Route path="/topics" element={<Topics />} />
           
           <Route path="*" element={
             <div className="min-h-screen bg-gray-50 pt-20 flex items-center justify-center">
