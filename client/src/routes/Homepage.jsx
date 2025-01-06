@@ -1,56 +1,83 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import Navbar from "../components/Navbar";
+
+const CategoryLink = ({ to, icon, text }) => {
+  const location = useLocation();
+  const isActive = location.pathname === to;
+
+  return (
+    <Link 
+      to={to} 
+      className={`
+        px-6 py-2.5 rounded-lg flex items-center gap-2 font-medium
+        transition-all duration-200 relative
+        ${isActive 
+          ? 'bg-blue-50 text-blue-700 shadow-sm' 
+          : 'text-gray-700 hover:bg-blue-50/50 hover:text-blue-700'
+        }
+      `}
+    >
+      <span className={`
+        text-lg transition-transform duration-200
+        ${isActive ? 'scale-110' : 'group-hover:scale-110'}
+      `}>
+        {icon}
+      </span>
+      <span>{text}</span>
+      
+      {/* Active Indicator */}
+      {isActive && (
+        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 rounded-full" />
+      )}
+    </Link>
+  );
+};
 
 const Homepage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      {/* Unified Navigation */}
-      <header className="bg-[#F0E6FF] fixed w-full z-50">
+      <Navbar />
+
+      {/* Category Navigation */}
+      <div className="bg-white shadow-sm mt-20 border-b">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            {/* Logo and Brand */}
-            <div className="flex items-center gap-2">
-              <Link to="/" className="flex items-center gap-3">
-                <img src="/shes.svg" alt="SheSecure" className="h-10" />
-                <span className="text-xl font-semibold text-gray-800">SheSecure</span>
-              </Link>
-            </div>
-
-            {/* Main Navigation - Desktop */}
-            <nav className="hidden md:flex items-center gap-8">
-              <Link to="/" className="text-gray-700 hover:text-blue-700 font-medium">Home</Link>
-              <Link to="/department" className="text-gray-700 hover:text-blue-700 font-medium">Department</Link>
-              <Link to="/topics" className="text-gray-700 hover:text-blue-700 font-medium">Topics</Link>
-              <Link to="/about" className="text-gray-700 hover:text-blue-700 font-medium">About</Link>
+            <nav className="flex items-center gap-4 overflow-x-auto py-3 px-2 scrollbar-hide">
+              <CategoryLink 
+                to="/cyber-news" 
+                icon="🔔" 
+                text="Cyber News" 
+              />
+              <CategoryLink 
+                to="/cyber-attacks" 
+                icon="⚠️" 
+                text="Cyber Attacks" 
+              />
+              <CategoryLink 
+                to="/resources" 
+                icon="🛠️" 
+                text="Resources-Tools" 
+              />
+              <CategoryLink 
+                to="/vulnerabilities" 
+                icon="🎯" 
+                text="Vulnerabilities" 
+              />
             </nav>
 
-            {/* Right Side Actions */}
-            <div className="flex items-center gap-4">
-              {/* Search Icon */}
-              <button className="p-2 hover:bg-[#E6D9FF] rounded-full transition-colors">
-                <span className="text-gray-600">🔍</span>
-              </button>
-              
-              {/* Login Button */}
-              <button className="hidden md:block bg-[#2B4EFF] text-white px-6 py-1.5 rounded-full font-medium hover:bg-blue-700 transition-colors">
-                Login
-              </button>
-
-              {/* Join Button */}
-              <button className="bg-[#2B4EFF] text-white px-6 py-1.5 rounded-full font-medium hover:bg-blue-700 transition-colors">
-                Join SheSecure
-              </button>
-
-              {/* Mobile Menu Button */}
-              <button className="p-2 hover:bg-[#E6D9FF] rounded-full transition-colors md:hidden">
-                <span className="text-gray-600">☰</span>
-              </button>
-            </div>
+            <Link
+              to="/get-started"
+              className="bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition-colors flex items-center gap-2 ml-4"
+            >
+              <span>Start Learning</span>
+              <span className="text-xl">→</span>
+            </Link>
           </div>
         </div>
-      </header>
+      </div>
 
       {/* Main Content */}
-      <main className="pt-20 flex-grow">
+      <main className="pt-4 flex-grow">
         {/* Hero Section */}
         <div className="bg-gradient-to-br from-[#F0E6FF] to-white py-16">
           <div className="max-w-7xl mx-auto px-4">
@@ -66,9 +93,12 @@ const Homepage = () => {
                   Get access to resources, training, and support.
                 </p>
                 <div className="flex gap-4">
-                  <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                  <Link 
+                    to="/get-started" 
+                    className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                  >
                     Get Started
-                  </button>
+                  </Link>
                   <button className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors">
                     Learn More
                   </button>

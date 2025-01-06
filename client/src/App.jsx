@@ -1,15 +1,23 @@
-import Navbar from "./components/NavBar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import Homepage from "./routes/Homepage";
+import GetStarted from "./routes/GetStarted";
+import SinglePostPage from "./routes/SinglePostPage";
 
 const App = () => {
   return (
-    <div className="px-4 md:px-8 lg:px-16 lx:px-32 2xl:px-64">
-      {/* NAVBAR */}
-      <Navbar />
-      {/* BREADCRUMB */}
-      {/* INTRODUCTION */}
-      {/* FEATURED POSTS */}
-      {/* POST LIST */}
-    </div>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Homepage />} exact />
+          <Route path="/get-started" element={<GetStarted />} exact />
+          <Route path="/scenarios" element={<GetStarted />} exact />
+          <Route path="/security" element={<GetStarted />} exact />
+          <Route path="/post/:slug" element={<SinglePostPage />} />
+          <Route path="*" element={<div>Page not found</div>} />
+        </Routes>
+      </Layout>
+    </Router>
   );
 };
 
