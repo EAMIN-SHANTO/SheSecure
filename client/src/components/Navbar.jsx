@@ -1,7 +1,9 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const location = useLocation();
+  
   return (
     <header className="bg-[#F0E6FF] fixed w-full z-50">
       <div className="max-w-7xl mx-auto px-4">
@@ -9,17 +11,40 @@ const Navbar = () => {
           {/* Logo and Brand */}
           <div className="flex items-center gap-3">
             <Link to="/" className="flex items-center gap-4">
-              <img src="/shes.svg" alt="SheSecure" className="h-16 w-16" />
+              <img src="/shes.svg" alt="SheSecure" className="h-20 w-20" />
               <span className="text-2xl font-semibold text-gray-800">SheSecure</span>
             </Link>
           </div>
 
           {/* Main Navigation - Desktop */}
           <nav className="hidden md:flex items-center gap-8">
-            <Link to="/" className="text-gray-700 hover:text-blue-700 font-medium">Home</Link>
+            <Link 
+              to="/" 
+              className={`text-gray-700 hover:text-blue-700 font-medium ${
+                location.pathname === '/' ? 'text-blue-700' : ''
+              }`}
+            >
+              Home
+            </Link>
+            <Link 
+              to="/learn"
+              className={`text-gray-700 hover:text-blue-700 font-medium ${
+                location.pathname === '/learn' ? 'text-blue-700' : ''
+              }`}
+            >
+              Learn
+            </Link>
             <Link to="/department" className="text-gray-700 hover:text-blue-700 font-medium">Department</Link>
             <Link to="/topics" className="text-gray-700 hover:text-blue-700 font-medium">Topics</Link>
             <Link to="/about" className="text-gray-700 hover:text-blue-700 font-medium">About</Link>
+            <Link 
+              to="/know-cyber"
+              className={`text-gray-700 hover:text-blue-700 font-medium ${
+                location.pathname === '/know-cyber' ? 'text-blue-700' : ''
+              }`}
+            >
+              Know Cyber
+            </Link>
           </nav>
 
           {/* Right Side Actions */}

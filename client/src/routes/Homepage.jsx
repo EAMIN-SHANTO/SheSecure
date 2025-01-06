@@ -66,7 +66,7 @@ const Homepage = () => {
             </nav>
 
             <Link
-              to="/get-started"
+              to="/learn"
               className="bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition-colors flex items-center gap-2 ml-4"
             >
               <span>Start Learning</span>
@@ -94,14 +94,17 @@ const Homepage = () => {
                 </p>
                 <div className="flex gap-4">
                   <Link 
-                    to="/get-started" 
+                    to="/get-started"
                     className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
                   >
                     Get Started
                   </Link>
-                  <button className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors">
+                  <Link 
+                    to="/interactive-learning"
+                    className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors"
+                  >
                     Learn More
-                  </button>
+                  </Link>
                 </div>
               </div>
               
